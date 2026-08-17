@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BookShelf — estante de livros</title>
+  <meta name="description" content="Estante de livros pessoal, em formato de log de terminal." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <main class="terminal">
+    <div class="terminal__bar">
+      <div class="terminal__dots">
+        <span class="dot dot--amber"></span>
+        <span class="dot dot--teal"></span>
+        <span class="dot dot--muted"></span>
+      </div>
+      <span class="terminal__title">elly@bookshelf: ~/estante</span>
+    </div>
+
+    <div class="terminal__body">
+
+      <header class="prompt-line">
+        <span class="prompt__user">elly</span><span class="prompt__at">@</span><span class="prompt__host">bookshelf</span><span class="prompt__sep">:~$</span>
+        <span class="prompt__cmd">./estante <span class="cursor"></span></span>
+      </header>
+
+      <p class="tagline">// minha estante de livros — registrada como log</p>
+
+      <nav class="filters" aria-label="Filtrar por status">
+        <button class="filter is-active" data-filter="todos">--todos</button>
+        <button class="filter" data-filter="lendo">--lendo</button>
+        <button class="filter" data-filter="lido">--lido</button>
+        <button class="filter" data-filter="quero-ler">--quero-ler</button>
+      </nav>
+
+      <section id="shelf" class="shelf" aria-live="polite"></section>
+
+      <p id="empty-state" class="empty-state hidden">
+        <span class="empty-state__bracket">[</span> nenhum registro encontrado <span class="empty-state__bracket">]</span>
+        <br />adicione um livro com o comando abaixo ↓
+      </p>
+
+      <section class="add-panel">
+        <p class="add-panel__label">
+          <span class="prompt__user">elly</span><span class="prompt__at">@</span><span class="prompt__host">bookshelf</span><span class="prompt__sep">:~$</span>
+          estante --add
+        </p>
+        <form id="book-form" class="add-form">
+          <input id="title" name="title" type="text" placeholder="titulo do livro" autocomplete="off" required />
+          <input id="author" name="author" type="text" placeholder="autor" autocomplete="off" required />
+          <select id="status" name="status">
+            <option value="quero-ler">--quero-ler</option>
+            <option value="lendo">--lendo</option>
+            <option value="lido">--lido</option>
+          </select>
+          <button type="submit" class="add-form__submit">adicionar</button>
+        </form>
+      </section>
+
+      <footer class="terminal__footer">
+        <span id="count-line"></span>
+      </footer>
+
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
